@@ -21,6 +21,8 @@ test_sources = [
 ]
 
 requires = [
+	"faker",
+	"httpx",
 ]
 test_requires = [
     "pytest",

@@ -5,7 +5,14 @@ My first application
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
+import faker
+import httpx
 
+def greeting(name):
+    if name:
+        return f"你好，{name}"
+    else:
+        return "你好，陌生人"
 
 class HelloWorld(toga.App):
     def startup(self):
@@ -22,7 +29,7 @@ class HelloWorld(toga.App):
         name_box.add(self.name_input)
 
         button = toga.Button(
-            "Say Hello!",
+            "按钮!",
             on_press=self.say_hello,
             margin=5,
         )
@@ -34,9 +41,56 @@ class HelloWorld(toga.App):
         self.main_window.content = main_box
         self.main_window.show()
 
-    def say_hello(self, widget):
-        print(f"Hello, {self.name_input.value}")
+    # # 最开始的内容
+    # def say_hello(self, widget):
+    #     print(f"Hello, {self.name_input.value}")
+    # async def say_hello(self, widget):
+    #     await self.main_window.dialog(
+    #         toga.InfoDialog(
+    #             greeting(self.name_input.value),
+    #             "这是一个描述!",
+    #         )
+    #     )
 
+    # # 使用fake，生成假的名字和文本描述
+    # async def say_hello(self, widget):
+    #     fake = faker.Faker()
+    #     await self.main_window.dialog(
+    #         toga.InfoDialog(
+    #             greeting(self.name_input.value),
+    #             f"A message from {fake.name()}: {fake.text()}",
+    #         )
+    #     )
+
+    # # 使用httpx，同步加载
+    # async def say_hello(self, widget):
+    #     fake = faker.Faker()
+    #     with httpx.Client() as client:
+    #         response = client.get("https://jsonplaceholder.typicode.com/posts/42")
+    #
+    #     payload = response.json()
+    #
+    #     await self.main_window.dialog(
+    #         toga.InfoDialog(
+    #             greeting(self.name_input.value),
+    #             f"A message from {fake.name()}: {payload['body']}",
+    #         )
+    #     )
+
+    # 使用httpx，异步加载
+    async def say_hello(self, widget):
+        fake = faker.Faker()
+        async with httpx.AsyncClient() as client:
+            response = await client.get("https://jsonplaceholder.typicode.com/posts/42")
+
+        payload = response.json()
+
+        await self.main_window.dialog(
+            toga.InfoDialog(
+                greeting(self.name_input.value),
+                f"A message from {fake.name()}: {payload['body']}",
+            )
+        )
 
 def main():
     return HelloWorld()
