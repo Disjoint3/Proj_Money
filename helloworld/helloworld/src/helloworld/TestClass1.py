@@ -14,7 +14,7 @@ def greeting(name):
     else:
         return "你好，陌生人"
 
-class HelloWorld(toga.App):
+class TestClass1(toga.App):
     def startup(self):
         main_box = toga.Box(direction=COLUMN)
 
@@ -93,4 +93,4 @@ class HelloWorld(toga.App):
         )
 
 def main():
-    return HelloWorld()
+    return TestClass1()
