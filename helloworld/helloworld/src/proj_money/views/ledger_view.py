@@ -17,14 +17,14 @@ class LedgerView:
         self.view_mode = toga.Selection(
             items=['文本展示', '直观图示'],
             on_change=self.controller.on_view_mode_change,
-            style=Pack(padding=5, flex=1)
+            style=Pack(margin=5, flex=1)
         )
 
         # 分类方式选择
         self.category_mode = toga.Selection(
             items=['总的', '按种类分'],
             on_change=self.controller.on_category_mode_change,
-            style=Pack(padding=5, flex=1)
+            style=Pack(margin=5, flex=1)
         )
         
         # 内容显示区域
@@ -35,9 +35,9 @@ class LedgerView:
         
         # 添加控制行
         control_row = toga.Box(style=Pack(direction=ROW))
-        control_row.add(toga.Label('显示模式:', style=Pack(padding=5, width=100)))
+        control_row.add(toga.Label('显示模式:', style=Pack(margin=5, width=100)))
         control_row.add(self.view_mode)
-        control_row.add(toga.Label('分类方式:', style=Pack(padding=5, width=100)))
+        control_row.add(toga.Label('分类方式:', style=Pack(margin=5, width=100)))
         control_row.add(self.category_mode)
         
         # 添加到主布局

@@ -18,14 +18,14 @@ class OtherView:
         
         # 创建信息标签
         info_labels = [
-            toga.Label(f"作者: {app_info.get('author', 'disjoint3（LYL）')}", style=Pack(padding=5)),
-            toga.Label(f"版本: {app_info.get('version', '1.0.0')}", style=Pack(padding=5)),
-            toga.Label(f"构建日期: {app_info.get('build_date', '未知')}", style=Pack(padding=5)),
-            toga.Label(f"鸣谢: {', '.join(app_info.get('acknowledgements', ['briefcase', 'toga']))}", style=Pack(padding=5)),
+            toga.Label(f"作者: {app_info.get('author', 'disjoint3（LYL）')}", style=Pack(margin=5)),
+            toga.Label(f"版本: {app_info.get('version', '1.0.0')}", style=Pack(margin=5)),
+            toga.Label(f"构建日期: {app_info.get('build_date', '未知')}", style=Pack(margin=5)),
+            toga.Label(f"鸣谢: {', '.join(app_info.get('acknowledgements', ['briefcase', 'toga']))}", style=Pack(margin=5)),
         ]
         
         # 配置信息标题
-        config_title = toga.Label("当前配置:", style=Pack(padding=10, font_weight='bold'))
+        config_title = toga.Label("当前配置:", style=Pack(margin=10, font_weight='bold'))
         
         # 配置信息
         config_info = self.controller.get_config_info()
@@ -33,10 +33,10 @@ class OtherView:
         
         for category, limit in config_info.get('monthly_limits', {}).items():
             if category != 'total':
-                config_labels.append(toga.Label(f"{category}: {limit}元", style=Pack(padding=2)))
+                config_labels.append(toga.Label(f"{category}: {limit}元", style=Pack(margin=2)))
         
         config_labels.append(toga.Label(f"总计: {config_info.get('monthly_limits', {}).get('total', 0)}元", 
-                                      style=Pack(padding=5, font_weight='bold')))
+                                      style=Pack(margin=5, font_weight='bold')))
         
         # 构建主布局
         self.main_box = toga.Box(style=Pack(direction=COLUMN, padding=10))

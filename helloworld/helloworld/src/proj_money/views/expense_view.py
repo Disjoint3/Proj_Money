@@ -15,31 +15,31 @@ class ExpenseView:
     def build_view(self):
         """构建记账界面"""
         # 金额输入
-        self.amount_input = toga.NumberInput(style=Pack(padding=5))
+        self.amount_input = toga.NumberInput(style=Pack(margin=5))
         
         # 类别选择
         self.category_select = toga.Selection(
             items=self.categories,
-            style=Pack(padding=5, flex=1)
+            style=Pack(margin=5, flex=1)
         )
         
         # 备注输入
         self.note_input = toga.TextInput(
             placeholder='备注（可选）',
-            style=Pack(padding=5, flex=1)
+            style=Pack(margin=5, flex=1)
         )
         
         # 时间输入（可选）
         self.time_input = toga.TextInput(
             placeholder='YYYY-MM-DD HH:MM (可选)',
-            style=Pack(padding=5, flex=1)
+            style=Pack(margin=5, flex=1)
         )
         
         # 确认按钮
         self.confirm_button = toga.Button(
             '确认记录',
             on_press=self.controller.on_confirm_expense,
-            style=Pack(padding=5)
+            style=Pack(margin=5)
         )
         
         # 构建主布局
@@ -49,19 +49,19 @@ class ExpenseView:
         
         # 添加输入行
         amount_row = toga.Box(style=Pack(direction=ROW))
-        amount_row.add(toga.Label('金额:', style=Pack(padding=5, width=80)))
+        amount_row.add(toga.Label('金额:', style=Pack(margin=5, width=80)))
         amount_row.add(self.amount_input)
         
         category_row = toga.Box(style=Pack(direction=ROW))
-        category_row.add(toga.Label('类别:', style=Pack(padding=5, width=80)))
+        category_row.add(toga.Label('类别:', style=Pack(margin=5, width=80)))
         category_row.add(self.category_select)
         
         note_row = toga.Box(style=Pack(direction=ROW))
-        note_row.add(toga.Label('备注:', style=Pack(padding=5, width=80)))
+        note_row.add(toga.Label('备注:', style=Pack(margin=5, width=80)))
         note_row.add(self.note_input)
         
         time_row = toga.Box(style=Pack(direction=ROW))
-        time_row.add(toga.Label('时间:', style=Pack(padding=5, width=80)))
+        time_row.add(toga.Label('时间:', style=Pack(margin=5, width=80)))
         time_row.add(self.time_input)
         
         # 添加到主布局
