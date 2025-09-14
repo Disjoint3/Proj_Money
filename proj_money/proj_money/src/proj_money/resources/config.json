@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "build_date": "2023-11-01",
+  "author": "disjoint3（LYL）",
+  "acknowledgements": ["briefcase", "toga"],
+  "categories": [
+    "餐饮",
+    "交通",
+    "购物",
+    "娱乐",
+    "学习",
+    "医疗",
+    "其他"
+  ],
+  "monthly_limits": {
+    "餐饮": 1000,
+    "交通": 500,
+    "购物": 1500,
+    "娱乐": 800,
+    "学习": 300,
+    "医疗": 200,
+    "其他": 500,
+    "total": 5000
+  }
+}
