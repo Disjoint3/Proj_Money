@@ -5,6 +5,7 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN
 
+from ..views.ledger_view import LedgerView
 
 
 class LedgerController:
@@ -46,6 +47,10 @@ class LedgerController:
         # 获取月度汇总
         summary = self.data_manager.get_monthly_summary()
         
+        # 如果没有消费记录，显示提示信息
+        if not summary['expenses']:
+            return toga.Label("本月暂无消费记录", style=Pack(padding=10, font_size=16))
+
         # 创建表格
         table = toga.Table(
             headings=['ID', '金额', '类别', '时间', '备注'],
@@ -63,6 +68,10 @@ class LedgerController:
         """创建图表显示内容"""
         # 获取月度汇总
         summary = self.data_manager.get_monthly_summary()
+
+        # 如果没有消费记录，显示提示信息
+        if not summary['expenses']:
+            return toga.Label("本月暂无消费记录", style=Pack(padding=10, font_size=16))
         
         if self.category_mode == '总的':
             # 创建环形图
