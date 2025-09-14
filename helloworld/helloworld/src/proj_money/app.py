@@ -3,10 +3,9 @@
 """
 import toga
 from toga.style import Pack
-from toga.style.pack import COLUMN
 
+from .models.data_manager import DataManager
 from .controllers.main_controller import MainController
-from .views.main_window import MainWindow
 
 
 class ProjMoney(toga.App):
@@ -14,17 +13,20 @@ class ProjMoney(toga.App):
         """
         应用启动时调用，初始化主窗口和控制器
         """
-        # 创建主窗口
-        main_window = MainWindow(app=self)
-        
+        # 初始化数据管理器
+        self.data_manager = DataManager()
+
         # 初始化主控制器
-        self.main_controller = MainController(app=self, main_window=main_window)
-        
+        self.main_controller = MainController(app=self)
+
+        # 创建主窗口
+        self.main_window = toga.MainWindow(title=self.formal_name)
+
         # 设置主窗口内容
-        main_window.content = self.main_controller.get_main_content()
-        
+        self.main_window.content = self.main_controller.get_main_content()
+
         # 显示主窗口
-        main_window.show()
+        self.main_window.show()
 
 
 def main():
