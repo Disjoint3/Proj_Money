@@ -5,7 +5,6 @@ import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN
 
-from ..views.ledger_view import LedgerView
 
 
 class LedgerController:

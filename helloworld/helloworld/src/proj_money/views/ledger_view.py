@@ -16,14 +16,14 @@ class LedgerView:
         # 显示模式选择
         self.view_mode = toga.Selection(
             items=['文本展示', '直观图示'],
-            on_select=self.controller.on_view_mode_change,
+            on_change=self.controller.on_view_mode_change,
             style=Pack(padding=5, flex=1)
         )
-        
+
         # 分类方式选择
         self.category_mode = toga.Selection(
             items=['总的', '按种类分'],
-            on_select=self.controller.on_category_mode_change,
+            on_change=self.controller.on_category_mode_change,
             style=Pack(padding=5, flex=1)
         )
         
