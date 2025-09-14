@@ -137,3 +137,20 @@ class DataManager:
         """检查时间戳是否在指定年月"""
         dt = datetime.fromisoformat(timestamp)
         return dt.year == year and dt.month == month
+
+    def get_categories(self):
+        """获取所有消费类别"""
+        return self.config.get('categories', [])
+
+    def get_monthly_limits(self):
+        """获取月度消费限制"""
+        return self.config.get('monthly_limits', {})
+
+    def get_app_info(self):
+        """获取应用信息"""
+        return {
+            'version': self.config.get('version', '1.0.0'),
+            'build_date': self.config.get('build_date', '未知'),
+            'author': self.config.get('author', 'disjoint3（LYL）'),
+            'acknowledgements': self.config.get('acknowledgements', ['briefcase', 'toga'])
+        }

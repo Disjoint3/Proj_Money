@@ -9,6 +9,7 @@ from toga.style.pack import COLUMN, ROW
 class ExpenseView:
     def __init__(self, controller):
         self.controller = controller
+        self.categories = self.controller.get_categories()  # 提前获取类别列表
         self.build_view()
     
     def build_view(self):
@@ -18,7 +19,7 @@ class ExpenseView:
         
         # 类别选择
         self.category_select = toga.Selection(
-            items=self.controller.get_categories(),
+            items=self.categories,
             style=Pack(padding=5, flex=1)
         )
         
@@ -79,6 +80,7 @@ class ExpenseView:
         self.amount_input.value = ''
         self.note_input.value = ''
         self.time_input.value = ''
+        self.category_select.value = self.categories[0] if self.categories else ''
     
     def get_input_values(self):
         """获取输入值"""
